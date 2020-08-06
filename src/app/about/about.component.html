@@ -1,0 +1,39 @@
+<p>about works!</p>
+
+<form >                                
+   Name  <input type="text" name="ename" [(ngModel)]=employee.Name 
+   [ngStyle]="{'background-color':'red'}" required minlength="4" /> <br/>
+
+   Age  <input type="number" name="eage" [(ngModel)]=employee.Age/> <br/>
+   Password<input type="password" #pwd [disabled]="false"  >
+   <button type="submit" class="btn btn-danger" style="height: 100px; width: 30;"
+   (click)="onSubmit(employee,pwd)">submit </button>
+
+  <p>{{title}}</p> 
+  <p>{{employee.Name}}</p>
+  <p>{{employee.Age}}</p>
+  <img [src]="path" height="100px" width="100">
+</form>
+
+<h2>ngFor</h2>
+<div style="border-style:groove;size: 0ch;" *ngFor="let employees of people">
+<li>{{employees.name}}  {{employees.age}}</li>
+</div>
+
+<h3>ngIf</h3>
+<!--we can use all logical operators && || ! etc-->
+<div *ngFor="let employees of people">
+ 
+  <div *ngIf="employees.age < 30 && employees.name ==='Sai' ">
+    <li >{{employees.name}}  {{employees.age}}</li></div>
+  </div>
+  <hr> <hr>
+  <h4>NgClass</h4>
+  <ul *ngFor="let person of people">
+    <li [ngClass]="{
+      'text-success':person.dept === 'HR',
+      'text-primary':person.dept === 'Finance',
+      'text-danger':person.dept === 'Designer'
+    }">{{ person.name }} 
+    </li>
+  </ul>
